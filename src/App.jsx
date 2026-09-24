@@ -139,11 +139,11 @@ export default function App() {
               </div>
               <a href="#hakkimizda" className="block text-base font-medium hover:text-amber-500">Hakkımızda</a>
               <a 
-                href="tel:+905555555555" 
+                href="tel:+905370202981" 
                 className="w-full bg-amber-600 text-slate-900 font-bold px-5 py-3 rounded-lg flex items-center justify-center transition-all mt-4"
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Bize Ulaşın (0555 555 5555)
+                Bize Ulaşın (0537 020 2981)
               </a>
             </div>
           </div>
@@ -284,7 +284,7 @@ export default function App() {
                 </li>
                 <li className="flex items-center">
                   <Phone className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
-                  <a href="tel:+905555555555" className="hover:text-amber-400 transition-colors">+90 555 555 55 55</a>
+                  <a href="tel:+905370202981" className="hover:text-amber-400 transition-colors">+90 537 020 2981</a>
                 </li>
                 <li className="flex items-center">
                   <Mail className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
