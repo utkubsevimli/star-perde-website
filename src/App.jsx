@@ -234,32 +234,53 @@ export default function App() {
         </div>
       </section>
 
-      {/* GOOGLE MAPS KONUMU */}
-      <section className="w-full bg-slate-100 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 flex items-center">
-                <MapPin className="h-8 w-8 text-amber-500 mr-3" /> Mağazamızı Ziyaret Edin
-              </h2>
-              <p className="mt-2 text-slate-600">Dokuları yakından görmek ve uzman ekibimizle görüşmek için bekliyoruz.</p>
-            </div>
-          </div>
-          <div className="w-full h-[300px] md:h-[450px] rounded-2xl overflow-hidden shadow-inner border-4 border-white">
-            {/* Temsili Google Maps Iframe (Gerçek kordinatlarınızla değiştirebilirsiniz) */}
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d192697.79327663232!2d28.871754668471243!3d41.0054958082697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zSXN0YW5idWwsIFTDvHJraXll!5e0!3m2!1str!2sus!4v1714578103023!5m2!1str!2sus" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen="" 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Mağaza Konumu"
-            ></iframe>
-          </div>
-        </div>
-      </section>
+     
+{/* GOOGLE MAPS - STAR PERDE */}
+<section className="w-full bg-slate-100 py-12">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div className="mb-8">
+      <h2 className="text-2xl md:text-3xl font-bold text-slate-900 flex items-center">
+        <MapPin className="h-8 w-8 text-amber-500 mr-3" />
+        Mağazamızı Ziyaret Edin
+      </h2>
+
+      <p className="mt-2 text-slate-600">
+        STAR PERDE mağazamıza bekliyoruz.
+        Bizi ziyaret ederek perde modellerimizi yakından inceleyebilirsiniz.
+      </p>
+    </div>
+
+    
+
+    <div className="relative w-full h-[300px] md:h-[450px] rounded-2xl overflow-hidden shadow-inner border-4 border-white">
+
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6430.97548094236!2d30.144034375279404!3d36.30047749571044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c18a8862bad173%3A0xe224b9620eed5a7!2sSTAR%20PERDE!5e0!3m2!1str!2str!4v1790857897631!5m2!1str!2str"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="strict-origin-when-cross-origin"
+    title="STAR PERDE Mağaza Konumu"
+  />
+
+  {/* Sağ üst Yol Tarifi butonu */}
+  <a
+    href="https://maps.app.goo.gl/4eDtaJVJjT2ZtiW87"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="absolute top-4 right-4 z-10 inline-flex items-center rounded-lg bg-amber-500 px-4 py-2.5 font-semibold text-white shadow-lg transition hover:bg-amber-600"
+  >
+    <MapPin className="h-5 w-5 mr-2" />
+    Yol Tarifi Al
+  </a>
+
+</div>
+
+  </div>
+</section>
 
       {/* FOOTER */}
       <footer className="bg-slate-900 text-slate-300 pt-16 pb-8 border-t-[6px] border-amber-500">
