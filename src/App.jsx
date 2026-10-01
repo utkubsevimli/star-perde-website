@@ -10,7 +10,7 @@ import DikeyTulPerde from './images/dikey-tul-perde.jpeg';
 import BalkonPerde from './images/balkon-perde.jpeg';
 import BracolPerde from './images/bracol-perde.jpeg';
 
-import Hakkimizda from './hakkımızda.jsx';
+import Hakkimizda from './hakkimizda.jsx';
 import { FaInstagram } from "react-icons/fa";
 import { 
   Search, Phone, Menu, MessageCircle, 
@@ -182,7 +182,7 @@ export default function App() {
                 />
                 <Search className="absolute right-3 top-2.5 h-5 w-5 text-slate-400" />
               </div>
-              <a href="/hakkimizda" onClick={() => setIsMobileMenuOpen(false)} className="block text-base font-medium hover:text-amber-500">Hakkımızda</a>
+              <a href="/hakkimizda" onClick={() => setIsMobileMenuOpen(false)} className="block text-base font-medium hover:text-amber-500">Hakkimizda</a>
               <a 
                 href="tel:+905370202981" 
                 className="w-full bg-amber-600 text-slate-900 font-bold px-5 py-3 rounded-lg flex items-center justify-center transition-all mt-4"
