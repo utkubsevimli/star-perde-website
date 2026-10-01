@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import logo from './star-perde-logo.jpeg';
+import TulPerde from './images/tul-perde.jpeg';
+import StorPerde from './images/stor-perde.jpeg';
+import FonPerde from './images/fon-perde.jpeg';
+import zebraPerde from './images/zebra-perde.jpeg';
+import AhsapJaluziPerde from './images/ahsap-jaluzi-perde.jpeg';
+import PlisePerde from './images/plise-perde.jpeg';
+import DikeyTulPerde from './images/dikey-tul-perde.jpeg';
+import BalkonPerde from './images/balkon-perde.jpeg';
+import BracolPerde from './images/bracol-perde.jpeg';
+
+import Hakkimizda from './hakkımızda.jsx';
 import { FaInstagram } from "react-icons/fa";
 import { 
   Search, Phone, Menu, MessageCircle, 
@@ -12,36 +23,65 @@ const CATEGORIES = [
   "Balkon Perdesi", "Perde Aksesuarları", "Ev Tekstil"
 ];
 
+const CATEGORY_DETAILS = {
+  "Tül Perde": ["Düz Tül Perde", "Çizgili Tül Perde", "Desenli Tül Perde", "Örme Dantel Tül Perde","Çocuk Odası Tül Perde","Kruvaze Tül Perde"],
+  "Stor Perde": ["Blackout Stor Perde", "Screen Stor Perde", "Mat Stor Perde", "Tül Stor Perde","Akustik Stor Perde","Lazer kesim Stor Perde","Simli Stor Perde","Siluet Stor Perde","Baskılı Stor Perde"],
+  "Zebra Perde": ["Düz Zebra Perde", "Bambu Zebra Perde", "Plise Zebra Perde", "Baskılı Zebra Perde","Desenli Zebra Perde","Simli Zebra Perde"],
+  "Fon Perde": ["Tül Fon Perde", "Düz Fon Perde", "Varaklı Japon Fon Perde", "Kadife Fon Perde","Pano Fon Perde","Desenli Fon Perde"],
+  "Jaluzi Perde": ["Ahşap Jaluzi", "Alüminyum Jaluzi"],
+  "Plise Perde": ["Düz Plise Perde", "Karartma Plise Perde", "Tül Plise Perde", "Desenli Plise Perde"],
+  "Dikey Tül Perde": ["Çizgili Dikey Tül", "Desenli Dikey Tül", "Renkli Dikey Tül"],
+  "Balkon Perdesi": ["Cam Balkon Perdesi", "Çizgili Balkon Perdesi", "Güneşlik"],
+  "Perde Aksesuarları": ["Fon Perde Rensoları", "Rustik Boru", "Fon Perde Braçolları", "Perde Sarkıtları"],
+  "Ev Tekstil": ["Nevresim & Nevresim Takımı", "Pike & Pike Takımı", "Battaniye", "Yatak Örtüsü","Yorgan","Yastık","Uyku Seti","Alez","Çarşaf","El & Yüz Havlusu","Banyo Havlusu","Plaj Havlusu","Bornoz & Bornoz Takımı","Çocuk Bornozu","Paspas & Klozet Takımı"]
+
+};
+
 const FABRIC_TYPES = [
   {
     title: "Tül Perde",
-    description: "Hafif ve şeffaf yapısıyla mekana ferahlık katar. Gün ışığını yumuşatarak içeri alır.",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    description: "Yaşam alanlarınıza gün ışığını yumuşatarak alan, şeffaf ve hafif dokusuyla evlere ferahlık ve zamansız bir şıklık katan klasik perde modeli.",
+    image: TulPerde
   },
   {
-    title: "Blackout (Karartma)",
-    description: "Işığı %100'e kadar keserek tam karanlık sağlar. Yatak odaları ve sinema odaları için idealdir.",
-    image: "https://images.unsplash.com/photo-1542004245-70335e971d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "Stor Perde",
+    description: "Mekanizmalı yapısı sayesinde kolay kullanım sunan, leke tutmaz kumaş seçenekleriyle özellikle mutfak ve ofislerde minimalist bir görünüm sağlayan dikey açılır perde.",
+    image: StorPerde
   },
   {
-    title: "Keten Kumaşlar",
-    description: "Doğal dokusuyla rüstik ve modern alanlara uyum sağlar. Odanıza organik bir hava katar.",
-    image: "https://images.unsplash.com/photo-1584288414436-4767178a9c2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "Zebra Perde",
+    description: "Saydam ve gazlı bez şeritlerin ardışık dizilimi sayesinde, tek bir hareketle hem tül hem de güneşlik işlevi gören, işlevsel ve modern mekanizmalı perde.",
+    image: zebraPerde
   },
   {
-    title: "Saten Kumaşlar",
-    description: "Parlak ve pürüzsüz yüzeyi ile lüks bir görünüm sunar. Klasik ve şık dekorasyonların vazgeçilmezidir.",
-    image: "https://images.unsplash.com/photo-1594912952520-25fc2521bc28?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "Fon Perde",
+    description: "Pencere kenarlarında dekoratif bir çerçeve oluşturan; zengin kumaş, renk ve doku seçenekleriyle mobilyalarınızı ve tül perdenizi tamamlayan estetik unsur.",
+    image: FonPerde
   },
   {
-    title: "Kadife Kumaşlar",
-    description: "Kalın ve yumuşak dokusuyla kış aylarında sıcak bir atmosfer yaratır. Zengin bir duruş sergiler.",
-    image: "https://images.unsplash.com/photo-1588661621303-366a7b72db54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "Jaluzi Perde",
+    description: "Ahşap veya alüminyum bantların açısını ayarlayarak ortama giren ışık miktarını ve gizliliği dilediğiniz gibi yönlendirmenizi sağlayan karizmatik tasarım.",
+    image: AhsapJaluziPerde
   },
   {
-    title: "Pamuklu Kumaşlar",
-    description: "Günlük kullanım için ideal, nefes alabilen ve kolay temizlenen yapıdadır. Her mekana uyar.",
-    image: "https://images.unsplash.com/photo-1620808064879-a720dc4627ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "Plise Perde",
+    description: "Katlanabilir ipli veya mekanizmalı yapısıyla cam balkon, çatı katı ve dar pencereler için ideal; aşağıdan yukarıya veya yukarıdan aşağıya açılabilen fonksiyonel çözüm.",
+    image: PlisePerde
+  },
+  {
+    title: "Dikey TülPerde",
+    description: "Tül yumuşaklığı ile dikey perdenin ışık yönlendirme avantajını birleştiren; geniş pencereler ve salonlar için oldukça modern ve görkemli bir seçenek.",
+    image: DikeyTulPerde
+  },
+  {
+    title: "Balkon Perdesi",
+    description: "Cam balkonlar ve açık alanlar için özel olarak tasarlanan; güneşe, rüzgara ve dış etkenlere karşı koruma sağlarken konforlu bir yaşam alanı oluşturan dayanıklı sistemler.",
+    image: BalkonPerde
+  },
+  {
+    title: "Perde Aksesuarları",
+    description: "Perde bağı, braçol, renso, fon demiri ve saçak gibi detaylarla perdelerinizin duruşunu zenginleştiren, dekorasyonunuzu tamamlayan estetik dokunuşlar.",
+    image: BracolPerde
   }
 ];
 
@@ -60,7 +100,12 @@ const BRANDS = [
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openCategory, setOpenCategory] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  if (window.location.pathname.replace(/\/$/, '') === '/hakkimizda') {
+    return <Hakkimizda />;
+  }
 
   // Otomatik Slider değişimi
   useEffect(() => {
@@ -103,7 +148,7 @@ export default function App() {
 
             {/* Menü Linkleri ve İletişim Butonu (Masaüstü) */}
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#hakkimizda" className="hover:text-amber-500 transition-colors font-medium">Hakkımızda</a>
+              <a href="/hakkimizda" className="hover:text-amber-500 transition-colors font-medium">Hakkımızda</a>
               <a 
                 href="tel:+905370202981" 
                 className="bg-amber-600 hover:bg-amber-500 text-slate-900 font-bold px-5 py-2.5 rounded-full flex items-center transition-all shadow-md shadow-amber-900/20"
@@ -137,7 +182,7 @@ export default function App() {
                 />
                 <Search className="absolute right-3 top-2.5 h-5 w-5 text-slate-400" />
               </div>
-              <a href="#hakkimizda" className="block text-base font-medium hover:text-amber-500">Hakkımızda</a>
+              <a href="/hakkimizda" onClick={() => setIsMobileMenuOpen(false)} className="block text-base font-medium hover:text-amber-500">Hakkımızda</a>
               <a 
                 href="tel:+905370202981" 
                 className="w-full bg-amber-600 text-slate-900 font-bold px-5 py-3 rounded-lg flex items-center justify-center transition-all mt-4"
@@ -153,14 +198,32 @@ export default function App() {
       {/* KATEGORİ ÇUBUĞU */}
       <div className="bg-white border-b border-slate-200 shadow-sm sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex overflow-x-auto py-3 space-x-6 scrollbar-hide whitespace-nowrap items-center text-sm font-medium text-slate-600" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-            <style>{`
-              .scrollbar-hide::-webkit-scrollbar { display: none; }
-            `}</style>
-            {CATEGORIES.map((cat, idx) => (
-              <a key={idx} href={`#${cat.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-amber-600 transition-colors cursor-pointer border-b-2 border-transparent hover:border-amber-600 pb-1">
-                {cat}
-              </a>
+          <div className="flex flex-wrap gap-x-6 gap-y-1 py-3 items-center text-sm font-medium text-slate-600">
+            {CATEGORIES.map((cat) => (
+              <div key={cat} className="relative group" onMouseEnter={() => setOpenCategory(cat)} onMouseLeave={() => setOpenCategory(null)}>
+                <button
+                  type="button"
+                  aria-haspopup="true"
+                  aria-expanded={openCategory === cat}
+                  onClick={() => setOpenCategory(openCategory === cat ? null : cat)}
+                  onFocus={() => setOpenCategory(cat)}
+                  className="hover:text-amber-600 transition-colors cursor-pointer border-b-2 border-transparent hover:border-amber-600 pb-1"
+                >
+                  {cat}
+                </button>
+                <div className={`${openCategory === cat ? 'block' : 'hidden'} group-hover:block absolute left-0 top-full z-50 min-w-52 rounded-lg border border-slate-200 bg-white py-2 shadow-xl`}>
+                  {CATEGORY_DETAILS[cat].map((detail) => (
+                    <a
+                      key={detail}
+                      href="#perde-kumas-cesitleri"
+                      onClick={() => setOpenCategory(null)}
+                      className="block px-4 py-2 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-700"
+                    >
+                      {detail}
+                    </a>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -204,11 +267,11 @@ export default function App() {
       </div>
 
       {/* PERDE KUMAŞ ÇEŞİTLERİ */}
-      <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="perde-kumas-cesitleri" className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-serif">Perde Kumaş Çeşitleri</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-serif">Perde Çeşitleri</h2>
           <div className="w-24 h-1 bg-amber-500 mx-auto rounded-full"></div>
-          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">Mekanınıza en uygun dokuyu seçin. Her ihtiyaca ve tarza hitap eden geniş kumaş yelpazemizle hizmetinizdeyiz.</p>
+          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">Tarzınıza ve mekanınıza en uygun modeli keşfedin. Her ihtiyacı karşılayan geniş ve çeşitli ürün yelpazemizle hizmetinizdeyiz.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -301,7 +364,7 @@ export default function App() {
               <ul className="space-y-4 text-sm">
                 <li className="flex items-start">
                   <MapPin className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span>Örnek Mahallesi, Perdeciler Caddesi No:123<br />Merkez / İstanbul</span>
+                  <span>Yeni Mahalle, 504.Sokak No:9<br />Finike / Antalya</span>
                 </li>
                 <li className="flex items-center">
                   <Phone className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
@@ -309,7 +372,7 @@ export default function App() {
                 </li>
                 <li className="flex items-center">
                   <Mail className="h-5 w-5 text-amber-500 mr-3 flex-shrink-0" />
-                  <a href="mailto:info@starperde.com" className="hover:text-amber-400 transition-colors">info@starperde.com</a>
+                  <a href="mailto:mehmet.lok@hotmail.com" className="hover:text-amber-400 transition-colors">mehmet.lok@hotmail.com</a>
                 </li>
               </ul>
             </div>
@@ -334,25 +397,17 @@ export default function App() {
               <h4 className="text-white text-lg font-bold mb-6 font-serif">Bizi Takip Edin</h4>
               <p className="text-sm mb-4">Yeni modellerden ve kampanyalardan haberdar olmak için sosyal medyada bizi takip edin.</p>
               <div className="flex space-x-4">
-                <a href="#" className="bg-slate-800 p-3 rounded-full hover:bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 hover:text-white transition-all text-slate-400">
+                <a href="https://www.instagram.com/star_perde_mehmet_lok?stkn=MXFrMW0zcGI1MnJoeQ%3D%3D" className="bg-slate-800 p-3 rounded-full hover:bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 hover:text-white transition-all text-slate-400">
                   <FaInstagram className="h-6 w-6" />
                 </a>
-                <a href="https://wa.me/905555555555" target="_blank" rel="noreferrer" className="bg-slate-800 p-3 rounded-full hover:bg-green-500 hover:text-white transition-all text-slate-400">
+                <a href="https://wa.me/905370202981" target="_blank" rel="noreferrer" className="bg-slate-800 p-3 rounded-full hover:bg-green-500 hover:text-white transition-all text-slate-400">
                   <MessageCircle className="h-6 w-6" />
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Anlaşmalı Markalar */}
-          <div className="border-t border-slate-800 pt-8 mt-8">
-            <h5 className="text-center text-sm font-medium text-slate-500 mb-6 uppercase tracking-wider">Anlaşmalı Markalarımız</h5>
-            <div className="flex flex-wrap justify-center items-center gap-6 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-              {BRANDS.map((logo, idx) => (
-                <img key={idx} src={logo} alt={`Marka ${idx + 1}`} className="h-10 md:h-12 object-contain rounded bg-white p-1" />
-              ))}
-            </div>
-          </div>
+          
 
           <div className="text-center text-sm text-slate-500 mt-12">
             &copy; {new Date().getFullYear()} Star Perde. Tüm hakları saklıdır.
